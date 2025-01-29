@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            height: 70vh;
+            border: 10px solid;
+            border-radius: 20px;
+            width: 30%;
+            margin: auto;
+            padding: 1px;
+            display: flex;
+            flex-direction: column;
+            background: lightgreen;
+        }
+
+        .child1 {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1px;
+            background: whitesmoke;
+            border-radius: 10px;
+        }
+
+        img {
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+        p {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .icons {
+            display: flex;
+            margin-left: auto;
+            align-items: center;
+        }
+
+        .icons img {
+            margin-left: 10px;
+        }
+
+        .child2 {
+            height: 300px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .child2::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .child2::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .date {
+            font-weight: bold;
+            margin: 10px auto;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            background: lightcoral;
+            width: fit-content;
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+
+        .left, .right {
+            border-radius: 10px;
+            padding: 5px 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+            margin-bottom: 5px;
+        }
+
+        .left {
+            align-self: flex-start;
+            background: white;
+        }
+
+        .right {
+            align-self: flex-end;
+            background: lightblue;
+        }
+
+        .input-bar {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            background: white;
+            border-radius: 10px;
+            margin: 10px;
+            border-top: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .input-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            background: #f0f0f0;
+        }
+
+        .input-bar button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            background: lightblue;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .input-bar button:hover {
+            background: deepskyblue;
+        }
+
+        .fa-paperclip {
+            margin-left: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .fa-face-smile{
+            margin-right: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 1200px) {
+            .container {
+                width: 60%;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .container {
+                width: 70%;
+            }
+
+            .child1 {
+                padding: 15px;
+            }
+
+            .child2 {
+                padding: 15px;
+            }
+
+            .left, .right {
+                max-width: 75%;
+            }
+
+            .input-bar input {
+                font-size: 16px;
+            }
+
+            .input-bar button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .icons img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 80%;
+                height: 80vh;
+            }
+
+            .child1 {
+                padding: 10px;
+            }
+
+            .child2 {
+                padding: 15px;
+            }
+
+            .left, .right {
+                max-width: 80%;
+            }
+
+            .input-bar input {
+                font-size: 16px;
+            }
+
+            .input-bar button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .icons img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                width: 100%;
+                /* height: 90vh; */
+                height: 50vh;
+            }
+
+            .child1 {
+                padding: 5px;
+            }
+
+            .child2 {
+                padding: 10px;
+            }
+
+            .left, .right {
+                max-width: 90%;
+            }
+
+            .input-bar input {
+                font-size: 18px;
+            }
+
+            .input-bar button {
+                font-size: 18px;
+                padding: 12px 25px;
+            }
+
+            .icons img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="child1">
+            <img src="prabhas.jpg" alt="Profile Picture of Min Yoongi" width="40" height="40">
+            <p>Min Yoongi</p>
+            <div class="icons">
+                <img src="calling.webp" alt="Call Icon" width="20" height="20">
+                <img src="download.jpg" alt="Options Icon" width="20" height="20">
+            </div>
+        </div>
+        <div class="child2">
+            <div class="date">22 Jan</div>
+            <div class="left">Hello! How are you?</div>
+            <div class="right">I'm good! What about you?</div>
+            <div class="left">I'm doing great, thanks! Had a long day though.</div>
+            <div class="right">Oh really? What happened?</div>
+            <div class="left">Just a lot of meetings and work. It was exhausting.</div>
+            <div class="right">I get that. Hope you get some rest!</div>
+
+            <div class="date">24 Jan</div>
+            <div class="left">Did you complete the task?</div>
+            <div class="right">Yes, I did. Just sent it over.</div>
+            <div class="left">Great! I'll review it now.</div>
+            <div class="right">Okay, take your time.</div>
+            <div class="left">By the way, did you check the client’s feedback?</div>
+            <div class="right">Yes! They were happy with the initial version.</div>
+            <div class="left">That’s a relief. We worked hard on it.</div>
+            <div class="right">Absolutely. Let’s keep up the good work!</div>
+
+            <div class="date">25 Jan</div>
+            <div class="left">The project is approved!</div>
+            <div class="right">That's fantastic news!</div>
+            <div class="left">Let's celebrate soon.</div>
+            <div class="right">Yes! Looking forward to it.</div>
+            <div class="left">Maybe dinner this weekend?</div>
+            <div class="right">Sounds like a plan! Where should we go?</div>
+            <div class="left">How about that new Italian place?</div>
+            <div class="right">Perfect! Let’s do it.</div>
+
+            <div class="date">26 Jan</div>
+            <div class="left">Happy Republic Day! 🇮🇳</div>
+            <div class="right">Same to you! 🇮🇳 Any plans for today?</div>
+            <div class="left">Just spending time with family. You?</div>
+            <div class="right">Same here. Watching the parade on TV now.</div>
+            <div class="left">Nice! It’s always inspiring to watch.</div>
+            <div class="right">Totally! Proud moment for all of us.</div>
+        </div>
+        <div class="input-bar">
+            <input type="text" placeholder="Type a message...">
+            <i class="fa fa-paperclip"></i>
+            <i class="fa fa-face-smile"></i>
+            <i class="fa fa-indian-rupee-sign"></i>
+            <button>
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
